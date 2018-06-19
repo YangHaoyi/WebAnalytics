@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>图吧统计系统</title>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("#page").text("");
+                $("#click").text("");
+                $.get("http://10.30.10.207:8080/avi/v1/analytics/pageIno", function (data, status) {
+                    var str="<ul>";
+                    console.log(data);
+                    $.each( data, function(index,item){
+                        str+="<li>"+"页面："+item.pageName+"</li>";
+                        str+="<li>"+"持续时间："+item.duration+"</li>";
+                        str+="<li>"+"次数："+item.count+"</li>";
+                        console.log(item);
+                    });
+                    str+="</ul>";
+                    $("#page").append(str);
+                });
+
+                $.get("http://10.30.10.207:8080/avi/v1/analytics/clickInfo", function (data, status) {
+                    var str="<ul>";
+                    console.log(data);
+                    $.each( data, function(index,item){
+                        str+="<li>"+"事件名称："+item.eventName+"</li>";
+                        str+="<li>"+"点击次数："+item.clickCount+"</li>";
+                        console.log(item);
+                    });
+                    str+="</ul>";
+                    $("#click").append(str);
+                });
+
+            });
+        });
+    </script>
+</head>
+<body>
+
+<button>刷新实时统计数据</button>
+
+<div id="page"></div>
+
+<div id="click"></div>
+
+
+
+</body>
+</html>
