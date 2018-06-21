@@ -10,7 +10,7 @@
             $("button").click(function () {
                 $("#page").text("");
                 $("#click").text("");
-                $.get("http://10.30.10.207:8080/avi/v1/analytics/pageIno", function (data, status) {
+                $.get("http://10.30.10.207:8080/api/v1/analytics/pageIno", function (data, status) {
                     var str="<ul>";
                     console.log(data);
                     $.each( data, function(index,item){
@@ -23,7 +23,7 @@
                     $("#page").append(str);
                 });
 
-                $.get("http://10.30.10.207:8080/avi/v1/analytics/clickInfo", function (data, status) {
+                $.get("http://10.30.10.207:8080/api/v1/analytics/clickInfo", function (data, status) {
                     var str="<ul>";
                     console.log(data);
                     $.each( data, function(index,item){
