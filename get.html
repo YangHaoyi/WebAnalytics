@@ -28,7 +28,11 @@
                     console.log(data);
                     $.each( data, function(index,item){
                         str+="<li>"+"事件名称："+item.eventName+"</li>";
+                        if(null!=item.otherEvent){
+                            str+="<li>"+"附加事件："+item.otherEvent+"</li>";
+                        }
                         str+="<li>"+"点击次数："+item.clickCount+"</li>";
+                        str+="<li></li>";
                         console.log(item);
                     });
                     str+="</ul>";
